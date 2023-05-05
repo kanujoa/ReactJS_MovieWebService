@@ -1,12 +1,12 @@
 import React from 'react';
-import './App.css';
 import Emoji from './Emoji';
-import MbToKB from './MBToKB';
+import MBToKB from './MBToKB';
 import CmToInch from './CmToInch';
 
 function App() {
-  const changeConverter = (e) => {
-    console.log(e);
+  const [converter, setConverter] = React.useState('MBToKB');
+  const changeConverter = (event) => {
+    setConverter(event.target.value);
   };
   return (
     <div>
@@ -23,6 +23,8 @@ function App() {
           inch
         </option>
       </select>
+      {converter === 'MBToKB' ? <MBToKB /> : null} {/*따옴표로 감싸주는 것 기억하기!*/}
+      {converter === 'CmToInch' ? <CmToInch /> : null}
     </div>
   );
 }
